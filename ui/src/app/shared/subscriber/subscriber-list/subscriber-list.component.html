@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 style="text-align: center">Subscribers</h1><br>
+
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="alert alert-info alert-dismissible">
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+
+
+  <div class="panel-body">
+    <table  class="table table-hover table-sm"  >
+      <thead class="thead-light">
+      <tr>
+        <th>Subscriber id</th>
+        <th>Subscriber email</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let subscriber of subscribers ">
+        <td>{{subscriber.id}}</td>
+        <td>{{subscriber.email}}</td>
+      </tr>
+      </tbody><br>
+    </table>
+  </div>
+
+

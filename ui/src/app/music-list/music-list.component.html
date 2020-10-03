@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 style="text-align: center">Music</h1><br>
+
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="alert alert-info alert-dismissible">
+      </div>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+
+<div class="panel-body">
+  <table  class="table table-hover table-sm"  >
+    <thead class="thead-light">
+    <tr>
+      <th>Music id</th>
+      <th>Music title</th>
+      <th>Music author </th>
+      <th>Music added</th>
+      <th>File</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let music of musicList ">
+      <td>{{music.id}}</td>
+      <td>{{music.title}}</td>
+      <td>{{music.author}}</td>
+      <td>{{music.added}}</td>
+      <td>{{music.id}}</td>
+      <td>{{music.file}}</td>
+    </tr>
+    </tbody><br>
+  </table>
+</div>
+
