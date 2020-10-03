@@ -11,6 +11,8 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/controller")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class MusicController {
 
     private final MusicService musicService;
@@ -22,7 +24,7 @@ public class MusicController {
         this.subscriberService = subscriberService;
     }
 
-    @GetMapping
+    @GetMapping("/music")
     public Flux<Music> list() {
         return musicService.musicFlux();
     }
@@ -31,7 +33,7 @@ public class MusicController {
     public Flux<Subscriber> subscriberFlux() {
         return subscriberService.list();
     }
-    @GetMapping("/subscribers/{id}")
+    @GetMapping("/subscribers/subscriber/{id}")
     public Mono<Subscriber> subscriberMono(@PathVariable Long id) {
         return subscriberService.subscriberById(id);
     }
