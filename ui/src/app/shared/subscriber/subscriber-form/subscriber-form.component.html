@@ -1,0 +1,13 @@
+
+<form   method="post" (ngSubmit)="save()" class="form-inline">
+
+  <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
+  <div class="input-group mr- mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">@</div>
+    </div>
+    <input type="email" class="form-control"  #name="ngModel" [(ngModel)]="subscriber.email" name="email"  id="inlineFormInputGroupUsername2" placeholder="Username">
+  </div>
+
+  <button type="submit"  class="btn btn-primary mb-2"></button>
+</form>

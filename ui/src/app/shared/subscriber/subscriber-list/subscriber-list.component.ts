@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Subscriber} from '../../services/subscribe/subscriber';
 import {Observable} from 'rxjs';
 import {SubscriberService} from '../../services/subscribe/subscriber.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-subscriber-list',
@@ -12,7 +13,8 @@ export class SubscriberListComponent implements OnInit {
 
 
   subscribers: Observable<Subscriber>;
-  constructor(private subscriberService: SubscriberService) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router, private subscriberService: SubscriberService) { }
 
 
   ngOnInit(): void {
@@ -22,4 +24,12 @@ export class SubscriberListComponent implements OnInit {
     });
   }
 
+  delete(id: number): void{
+    this.subscriberService.deleteSubscriberById(id).subscribe(data => console.log(data), error => console.log(error));
+    this.gotoRefresh();
+  }
+  gotoRefresh(): void {
+    this.router.navigate(['/']);
+  }
 }
+

@@ -1,7 +1,7 @@
 export class Music {
-  musicId: number;
+  musicid: number;
   title: string;
   author: string;
   added: Date;
-  musicFile: File;
+  musicfile: string;
 }

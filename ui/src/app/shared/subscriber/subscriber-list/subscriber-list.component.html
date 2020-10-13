@@ -26,9 +26,11 @@
       <tr *ngFor="let subscriber of subscribers ">
         <td>{{subscriber.id}}</td>
         <td>{{subscriber.email}}</td>
+        <td><form method="post" (ngSubmit)="delete(subscriber.id)"><button>delete</button> </form> </td>
       </tr>
       </tbody><br>
     </table>
+
   </div>
 
 

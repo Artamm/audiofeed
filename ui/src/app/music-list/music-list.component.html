@@ -1,18 +1,4 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h1 style="text-align: center">Music</h1><br>
 
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <div class="alert alert-info alert-dismissible">
-      </div>
-    </div>
-    <div class="col-sm-4"></div>
-  </div>
-</div>
-
-
-<div class="panel-body">
   <table  class="table table-hover table-sm"  >
     <thead class="thead-light">
     <tr>
@@ -26,16 +12,21 @@
 
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let music of musicList ">
+    <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+    <tr   *ngFor="let music of musicList " cdkDrag>
       <td>{{music.id}}</td>
       <td>{{music.title}}</td>
       <td>{{music.author}}</td>
       <td>{{music.added}}</td>
-      <td>{{music.id}}</td>
-      <td>{{music.file}}</td>
+      <td>
+<!--      <td><button (click)="play(music.musicfile)">Play</button>-->
+        <audio controls="controls" id="audio_{{music.id}}" loop>
+          Your browser does not support the &lt;audio&gt; tag.
+          <source id="source_{{music.id}}"  src="" type="audio/mp3" />
+        </audio>
+      </td>
+      {{initMusic(music.musicfile, music.id)}}
+      <td><button (click)="delete(music.id)"><i class="glyphicon glyphicon-remove"></i></button></td>
     </tr>
     </tbody><br>
   </table>
-</div>
-
