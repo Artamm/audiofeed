@@ -12,9 +12,10 @@ TBD list:
 - [x] Write migrations for PostgresDB
 - [x] Display/play music from db
 - [x] Add form for subscribers 
-- [ ] Add form for music
+- [x] Add form for music
 - [x] Delete a music
 - [x] Delete a subscriber
-- [ ] Add java mail 
+- [x] Add java mail 
 - [ ] Edit UI
 - [ ] Refactor @RestController
+- [ ] Add Web Worker
