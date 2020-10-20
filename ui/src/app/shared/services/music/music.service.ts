@@ -11,7 +11,9 @@ export class MusicService {
 
   private baseUrl = 'http://localhost:8080/controller/music/';
 
-  headers: HttpHeaders;
+  headers = new Headers();
+
+
   constructor(private http: HttpClient) {
   }
 
@@ -29,8 +31,19 @@ export class MusicService {
     return this.http.get(`${this.baseUrl}` + 'file/' + musicId);
   }
 
-  saveMusic(music: Music): Observable<any> {
-    return this.http.post<Music>(`${this.baseUrl}` + 'add', music, {headers: this.headers, reportProgress: true});
+  saveMusic(file: any): Observable<any> {
+    let input = new FormData();
+    input.append('musicfile', file);
+
+    // const HttpUploadOptions = {
+    //   headers: new HttpHeaders({ Accept: 'application/json' })
+    // }
+    return this.http.post(`${this.baseUrl}` + 'add', input);
+
+  }
+
+  saveMusicText(music: Music): Observable<any> {
+    return this.http.post<Music>(`${this.baseUrl}` + 'addMusic', music);
   }
 
   deleteMusic(id: number): Observable<any> {

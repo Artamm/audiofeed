@@ -20,7 +20,6 @@ export class SubscriberListComponent implements OnInit {
   ngOnInit(): void {
     this.subscriberService.getSubscribersList().subscribe(data => {
       this.subscribers = data;
-      console.log(data);
     });
   }
 

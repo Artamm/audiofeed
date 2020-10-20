@@ -16,23 +16,29 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@Getter
-@Setter
-public class Music {
+@Getter @Setter
+public class Music extends MusicInfo {
 
-    @Id
-    Long id;
-    String author;
-    String title;
-
-
+//    @Id
+//    Long id;
+//    String author;
+//    String title;
+//    LocalDate added;
 
     byte[] musicfile;
     String filename;
 
 
-    LocalDate added;
 
 
+    public Music(String author, String title, String filename) {
+        this.author = author;
+        this.title = title;
+        this.filename = filename;
+    }
 
+    public Music(MusicGet musicGet){
+        setAuthor(musicGet.getAuthor());
+        setTitle(musicGet.getTitle());
+    }
 }

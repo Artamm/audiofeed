@@ -12,7 +12,7 @@
 
     </tr>
     </thead>
-    <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+    <tbody cdkDropList [cdkDropListData]="musicList" (cdkDropListDropped)="drop($event)">
     <tr   *ngFor="let music of musicList " cdkDrag>
       <td>{{music.id}}</td>
       <td>{{music.title}}</td>
@@ -30,3 +30,4 @@
     </tr>
     </tbody><br>
   </table>
+<app-music-form></app-music-form>

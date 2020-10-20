@@ -1,12 +1,12 @@
 <p>music-form works!</p>
 <div>
-  <form (ngSubmit)="save()" method="post">
+  <form (ngSubmit)="save(music)" method="post" enctype="multipart/form-data">
 
-    <input id="author" #name="ngModel" [(ngModel)]="music.author" type="text" placeholder="Author">
-    <input id="title" #name="ngModel" [(ngModel)]="music.title" type="text" placeholder="title" required="">
-    <input id="filename" #name="ngModel" [(ngModel)]="music.title" type="text" placeholder="filename" >
+    <input id="author" name="author" [(ngModel)]="music.author " type="text" placeholder="Author">
+    <input id="title" name="title" [(ngModel)]="music.title" type="text" placeholder="title" required>
+    <input id="filename" name="filename" #filename [(ngModel)]="music.filename" type="text" placeholder="filename" required>
 
-    <input id="musicFile" type="file"  (change)="setParameters()" required="">
+    <input id="musicFile" type="file"  (change)="handleFileInput($event.target.files)" required>
     <button type="submit"><i class="glyphicon glyphicon-save-file"></i>Submit music</button>
   </form>
 

@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MusicService} from '../shared/services/music/music.service';
 import {Observable} from 'rxjs';
 import {Music} from '../shared/services/music/music';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AsyncAction} from 'rxjs/internal/scheduler/AsyncAction';
 
 @Component({
   selector: 'app-music-list',
@@ -42,7 +43,7 @@ export class MusicListComponent implements OnInit {
         byteArrays.push(byteArray);
       }
 
-      const blob = new Blob(byteArrays, {type: 'audio/mp3'},);
+      const blob = new Blob(byteArrays, {type: 'audio/mp3'}, );
       return blob;
     };
 
@@ -66,12 +67,16 @@ export class MusicListComponent implements OnInit {
 
   }
 
-  drop($event: CdkDragDrop<Music[]>): void {
-    let array;
-    this.musicList.subscribe(misc => {
-      return array = misc as unknown as Music[];
-    })
-    moveItemInArray(array, $event.previousIndex, $event.currentIndex);
+  drop(event: CdkDragDrop<Music[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   delete(id: number): void {
